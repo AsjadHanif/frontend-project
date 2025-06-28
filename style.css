@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing: border-box;         
 }
+*::selection{
+    color: #fff;
+    background-color: #000;
+}
 html, body{
     height: 100%;
     width: 100%;
@@ -20,10 +24,54 @@ html, body{
     text-transform: uppercase;
     font-family: futura;
     letter-spacing: -4px;
+    padding-bottom: 15px;
 }
-#image-container{
+.parallax-wrapper {
     height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .parallax-bg {
+    background-image: url('assests/images/woman.jpg');
+    background-size: cover;
+    /* background-repeat: no-repeat; */
+    background-position: center;
+    height: 120vh; /* Slightly larger to allow scroll animation */
     width: 100%;
-    margin-top: 1vw;
-    background-color: grey;
-}
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(0);
+    transition: transform 0.1s ease-out;
+    z-index: -1;
+  }
+  
+#brand-logos {
+    height: 40vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 30px;
+    background-color: #f9f9f9;
+  }
+  
+  #brand-logos img {
+    height: 90px;         /* Force same height */
+    width: auto;          /* Let width adjust */
+    max-width: 200px;     /* Optional, limit max width */
+    object-fit: contain;  /* For safety */
+    display: block;       /* Avoid extra bottom space */
+    filter: grayscale(100%);
+    transition: 0.3s ease;
+    overflow: hidden;
+  }
+  
+  #brand-logos img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+  }
+
+    
