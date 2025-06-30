@@ -1,16 +1,17 @@
+const scroll = new LocomotiveScroll({
+    el: document.querySelector('#main'),
+    smooth: true
+});
+
 // Parallax effect
-// function Parallax() {
-//     window.addEventListener("scroll", () => {
-//         const scrollY = window.scrollY;
-//         const parallax = document.getElementById("parallax");
-    
-//         // Slight movement — adjust 0.2 for more/less
-//         parallax.style.transform = `translateY(${scrollY * 0.2}px)`;
-//       });
-    
-    
-// }
-// Parallax()
+function Parallax() {
+    scroll.on("scroll", (args) => {
+        const scrollY = args.scroll.y;
+        const parallax = document.getElementById("parallax");
+        parallax.style.transform = `translateY(${scrollY * 0.1}px)`;
+      });
+}
+Parallax()
 
 function loadinganimation() {
     gsap.from("#page1 h1" , {
@@ -20,11 +21,11 @@ function loadinganimation() {
         delay: 0.2, 
         stagger: 0.2,
     })
-    gsap.from("#parallax" , {
-        scale: 1.5,
+    gsap.from("#page1 #parallax-wrapper " , {
+        scale: 1.3,
         opacity: 0,
         duration: 0.3,
-        delay: 0.8, 
+        delay: 0.7, 
     })
 }
 loadinganimation()
