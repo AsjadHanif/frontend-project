@@ -1,16 +1,16 @@
 // Parallax effect
-function Parallax() {
-    window.addEventListener("scroll", () => {
-        const scrollY = window.scrollY;
-        const parallax = document.getElementById("parallax");
+// function Parallax() {
+//     window.addEventListener("scroll", () => {
+//         const scrollY = window.scrollY;
+//         const parallax = document.getElementById("parallax");
     
-        // Slight movement — adjust 0.2 for more/less
-        parallax.style.transform = `translateY(${scrollY * 0.2}px)`;
-      });
+//         // Slight movement — adjust 0.2 for more/less
+//         parallax.style.transform = `translateY(${scrollY * 0.2}px)`;
+//       });
     
     
-}
-Parallax()
+// }
+// Parallax()
 
 function loadinganimation() {
     gsap.from("#page1 h1" , {

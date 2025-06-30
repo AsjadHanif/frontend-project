@@ -28,24 +28,22 @@ html, body{
 }
 .parallax-wrapper {
     height: 100vh;
-    overflow: hidden;
+    /* overflow: hidden; */
     position: relative;
   }
   
-  .parallax-bg {
-    background-image: url('assests/images/woman.jpg');
-    background-size: cover;
+.parallax-wrapper img {
+    /* background-image: url('assests/images/woman.jpg'); */
+    object-fit: cover;
     /* background-repeat: no-repeat; */
     background-position: center;
-    height: 120vh; /* Slightly larger to allow scroll animation */
+    height: 100vh; /* Slightly larger to allow scroll animation */
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    transform: translateY(0);
-    transition: transform 0.1s ease-out;
     z-index: -1;
-  }
+}
   
 #brand-logos {
     height: 40vh;
