@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
@@ -25,7 +26,11 @@
         </div>
         </div>
         <div id="page2">
-            <div class="tagline"><div class="tag1">Better Vision</div><div class="tag2">Better Future</div></div>
+            <div class="tagline">
+                <div class="tag1">Better Vision</div>
+            <div class="tag2">Better Future</div>
+            </div>
+            <div id="cards" class="cards">
             <div id="elem1" class="elem">
                 <img  data-scroll data-scroll-speed="0.8" src="assests/images/boy-showing2.jpg" alt="">
                 <div data-scroll data-scroll-speed="-4" class="dets"></div>
@@ -38,11 +43,28 @@
                 <img  data-scroll data-scroll-speed="0.6" src="assests/images/rain2.jpg" alt="">
                 <div data-scroll data-scroll-speed="-4" class="dets"></div>
             </div>
+            </div>
+            <section class="promo-section">
+                <div class="promo-container">
+                  <div class="promo-left">
+                    <h1>We believe clear vision, <br> empowers a brighter future.</h1>
+                  </div>
+                  <div class="promo-right">
+                    <p>Every pair of glasses you buy supports someone in need — restoring not just sight, 
+                        but also self-confidence and independence.</p>
+                    <p>With each purchase, you're helping someone see the world more clearly, 
+                        and giving them the clarity to move forward.</p>
+                    <a href="#" class="promo-link">SHOP TO SUPPORT</a>
+                  </div>
+                </div>
+              </section>
+        </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>

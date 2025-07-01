@@ -15,7 +15,7 @@ html, body{
     min-height: 100vh;
     width: 100%;
     position: relative;
-    padding: 0 1vw;
+    padding: 0 1.5vw;
     padding-top: 25vh;
 } 
 #page1 h1{
@@ -55,15 +55,15 @@ html, body{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 50px;
-    padding: 30px;
-    background-color: #f9f9f9;
+    gap: 100px;
+    padding: 20px;
+    background-color: #ffffff;
 }
   
 #brand-logos img {
-    height: 90px;         /* Force same height */
+    height: 70px;         /* Force same height */
     width: auto;          /* Let width adjust */
-    max-width: 200px;     /* Optional, limit max width */
+    max-width: 400px;     /* Optional, limit max width */
     object-fit: contain;  /* For safety */
     display: block;       /* Avoid extra bottom space */
     filter: grayscale(100%);
@@ -77,44 +77,42 @@ html, body{
 }
 
 #page2{
-    display: flex;
-    justify-content: space-between;
-    min-height: 100vh;
+    min-height: 200vh;
     width: 100%;
-    position: relative;
-    padding: 3.5vw 1vw;
-    align-items: center;
+    padding: 0 1.5vw;
+    padding: relative;
 }
 #page2 .tagline{
-    font-size: 0.7vw;
-    font-family: 'Arial Narrow', Arial, sans-serif;
-    font-weight: 100;
-    /* font-family: futura; */
-    text-transform: uppercase;
-    line-height: 1;
-    margin: 0vw 1vw 0vw 1vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #000;
-    position: absolute;
-    width: 100%;
-    height: 6px;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  font-size: 0.7vw;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-weight: 100;
+  /* font-family: futura; */
+  text-transform: uppercase;
+  line-height: 1;
+  /* margin: 0 40px; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+  position: absolute;
+  width: 98%;
+  height: 6px;
 }
 .tagline .tag1{
-    margin-bottom: 25px;
-    /* max-height: 10px; */
-    /* font-size: 2vh; */
+  margin-bottom: 25px;
 }
 
 .tagline .tag2{
-    margin-bottom: 25px;  /* max-height: 10px; */
-  /* font-size: 2vh; */
+  margin-bottom: 25px; 
 }
-
+#cards{
+    display: flex;
+    justify-content: space-between;
+    min-height: 90vh;
+    width: 100%;
+    position: relative;
+    align-items: center;
+}
 #page2 .elem{
     height: 84vh;
     width: 31%;
@@ -125,7 +123,7 @@ html, body{
     height: 100%;
     width: 100%;
     object-fit: cover;
-    scale: 1.1;
+    scale: 1;
 }
 #page2 .elem .dets{
     position: absolute;
@@ -143,7 +141,91 @@ html, body{
     backdrop-filter: blur(5px);
     background-color: rgba(248, 248, 207, 0.61);
 }
-
+#page2 .promo-section {
+  padding: 16px 5px;
+  background-color: #ffffff;
+  font-family: 'Futura', sans-serif;
+}
+.promo-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 180px;
+  max-width: 100%;
+  margin: auto;
+  align-items: flex-start;
+}
+/* #page2 .text1{
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: #000;
+    justify-content: space-between;
+    gap: 60px;
+    max-width: 1200px;
+    margin: auto;
+    align-items: flex-start;
+} */
+.promo-left h1 {
+  font-size: 40px;
+  font-family: futura;
+  text-transform: uppercase;
+  line-height: 1.6;
+  color: #000;
+  margin: 0;
+  min-width: 330px;
+}
+.promo-right p {
+  max-width: 400px;
+  margin-left: 220px;
+  font-size: 16px;
+  min-width: 330px;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-weight: 500;
+  color: #333;
+  margin-right: 230px;
+  margin-bottom: 20px;
+  line-height: 2;
+}
+/* .text1 .heading{
+    text-align: left;
+    font-size: 3vw;
+    font-family: futura;
+    text-transform: uppercase;
+} */
+/* .text1 .descrip{
+  text-align: center;
+  font-size: 1vw;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+} */
+.promo-link{
+  font-size: 12px;
+  padding: 0 230px 0 220px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #000;
+  font-family: futura;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+.promo-link::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+  margin-top: 2px;
+}
+.promo-link:hover::after {
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
+}
+@media (max-width: 1024px) {
+  .promo-container {
+    gap: 0;
+}
 @media (max-width: 768px)  {
   #page1{
     padding: 35vw 2vw 2vw 2vw;
