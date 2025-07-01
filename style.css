@@ -11,6 +11,14 @@ html, body{
     height: 100%;
     width: 100%;
 }
+.cursor{
+  height: 200px;
+  width: 200px;
+  background-color: #000;
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%) scale(0);
+}
 #page1{
     min-height: 100vh;
     /* width: 100%; */
@@ -78,7 +86,7 @@ html, body{
 }
 
 #page2{
-    min-height: 200vh;
+    min-height: 300vh;
     width: 100%;
     padding: 0 1.5vw;
     padding: relative;
@@ -143,6 +151,7 @@ html, body{
     background-color: rgba(248, 248, 207, 0.61);
 }
 #page2 .promo-section {
+  margin-bottom: 10vh;
   padding: 20px 5px 0 5px;
   background-color: #ffffff;
   font-family: 'Futura', sans-serif;
@@ -200,7 +209,35 @@ html, body{
   transform-origin: right;
   transition: transform 0.3s ease-in-out;
 }
-
+.moreprds{
+  max-width: 98%;
+  max-height: 200vh;
+}
+.moreprds .prd3 , .prd4, .prd5, .prd6{
+  max-width: 50vw;
+  max-height: 60vh;
+  /* object-fit: cover; */
+  margin: 20px;
+  /* overflow: hidden; */
+}
+.moreprds .prd3 {
+  max-height: 60vh;
+}
+.moreprds img{
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  scale: 0.8;
+}
+.moreprds span{
+  font-size: 1vw;
+  text-align: center;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-weight: 400;
+  min-width: 40vw;
+  height: 20px;
+  margin-left: 12vw;
+}
 @media (max-width: 1024px) {
   #page1{
     padding: 35vw 2vw 2vw 2vw;
