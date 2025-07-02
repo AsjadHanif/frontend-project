@@ -1,16 +1,87 @@
-//Smooth scrolling effect
-const scroll = new LocomotiveScroll({
-    el: document.querySelector('#main'),
-    smooth: true
+// Locomotive Scroll trigger
+function ScrollTriggler() {
+  gsap.registerPlugin(ScrollTrigger);
+
+// Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
+
+const locoScroll = new LocomotiveScroll({
+  el: document.querySelector("#main"),
+  smooth: true
+});
+// each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
+locoScroll.on("scroll", ScrollTrigger.update);
+
+// tell ScrollTrigger to use these proxy methods for the "#main" element since Locomotive Scroll is hijacking things
+ScrollTrigger.scrollerProxy("#main", {
+  scrollTop(value) {
+    return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+  }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+  getBoundingClientRect() {
+    return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
+  },
+  // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
+  pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
 });
 
+// each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
+ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+
+// after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
+ScrollTrigger.refresh();
+
+}
+ScrollTriggler()
+// gsap scroll triggler logo animation
+function logoanimation() {
+    gsap.to("#nav-part1 svg", {
+      transform: "translateY(-150%) scale(1.4)",
+      scrollTrigger: {
+        trigger: "#page1",
+        scroller: "#main",
+        markers: true,
+        start: "top 0",
+        end: "top -5%",
+        scrub: 1,
+      }
+    })
+}
+logoanimation()
+
+//Nav-link active color change
+function NavLinkActive() {
+  // Get all nav links
+const navLinks = document.querySelectorAll('.nav-link');
+
+// Loop through all nav links
+navLinks.forEach(link => {
+  link.addEventListener('click', function () {
+    // Remove 'active' class from all links
+    navLinks.forEach(l => l.classList.remove('active'));
+    
+    // Add 'active' class to clicked link
+    this.classList.add('active');
+  });
+});
+}
+NavLinkActive()
+
 // Parallax effect
+
+
+// Parallax function mein locoScroll use karein
 function Parallax() {
-    scroll.on("scroll", (args) => {
+    const locoScroll = new LocomotiveScroll({
+        el: document.querySelector("#main"),
+        smooth: true
+    });
+
+    locoScroll.on("scroll", (args) => {
         const scrollY = args.scroll.y;
         const parallax = document.getElementById("parallax");
-        parallax.style.transform = `translateY(${scrollY * 0.2}px)`;
-      });
+        if (parallax) {
+            parallax.style.transform = `translateY(${scrollY * 0.2}px)`;
+        }
+    });
 }
 Parallax()
 

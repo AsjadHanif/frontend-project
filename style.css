@@ -10,6 +10,82 @@
 html, body{
     height: 100%;
     width: 100%;
+    background-color: #f7f7f7;
+}
+.titillium-web-extralight {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+nav{
+  min-height: 140px;
+  z-index: 99;
+}
+#nav-part1{
+  height: 104px;
+  overflow: hidden;
+}
+nav #nav-part1 svg{
+  color: #000;
+  display: block;
+}
+nav #nav-part1 .svg1{
+  margin-top: 12px;
+  margin-left: 30px;
+  scale: 1.4;
+}
+nav #nav-part1 .svg2{
+  margin-top: 25px;
+  margin-left: 30px;
+  scale: 1.4;
+}
+nav #nav-part1 svg:hover{
+  color: #25c410da;
+}
+.icons{
+  display: flex;
+  background-color: #f7f7f7;
+  border-radius: 50px;
+  padding: 8px 0px;
+  margin-right: 30px;
+  margin-top: -10px;
+}
+.nav-icon{
+  color: #000;
+  font-size: larger;
+  padding: 0 36px;
+}
+.nav-icon:hover{
+  rotate: 20deg;
+}
+.nav-link{
+  text-transform: uppercase;
+  color: #000;
+  font-size: larger;
+  padding: 0 43px;
+}
+.nav-link.active{
+  color: #50af43;
+}
+.nav-link:hover {
+  color: #50af43;
+}
+.nav-link::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+  margin-top: 0.6px;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease-in-out , opacity 0.4s; 
+}
+.nav-link:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+  transform-origin: left;
 }
 .cursor{
   height: 200px;
@@ -24,7 +100,7 @@ html, body{
     /* width: 100%; */
     position: relative;
     padding: 0 1.5vw;
-    padding-top: 25vh;
+    padding-top: 14vh;
 } 
 #page1 h1{
     color: #000;
@@ -153,7 +229,7 @@ html, body{
 #page2 .promo-section {
   margin-bottom: 10vh;
   padding: 20px 5px 0 5px;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   font-family: 'Futura', sans-serif;
 }
 .promo-container {
