@@ -55,15 +55,13 @@ nav #nav-part1 svg:hover{
   font-size: larger;
   padding: 0 36px;
 }
-.nav-icon:hover{
-  rotate: 20deg;
-}
 .nav-link{
   text-transform: uppercase;
   color: #000;
   font-size: larger;
   padding: 0 43px;
 }
+
 .nav-link.active{
   color: #50af43;
 }

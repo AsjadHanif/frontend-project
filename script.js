@@ -31,6 +31,7 @@ ScrollTrigger.refresh();
 
 }
 ScrollTriggler()
+
 // gsap scroll triggler logo animation
 function logoanimation() {
     gsap.to("#nav-part1 svg", {
@@ -38,14 +39,52 @@ function logoanimation() {
       scrollTrigger: {
         trigger: "#page1",
         scroller: "#main",
-        markers: true,
+        markers: false,
         start: "top 0",
         end: "top -5%",
-        scrub: 1,
+        scrub: true,
       }
     })
 }
 logoanimation()
+
+// gsap scroll triggler nav-item animation
+function navitemScrollanimation() {
+gsap.to(".item", {
+  y: "-150%",
+  opacity: 0,
+  stagger: 0.05,
+  scrollTrigger: {
+    trigger: "#page1",
+    scroller: "#main",
+    start: "top 0",
+    end: "top -5%",
+    scrub: 1,
+  }
+});
+}
+navitemScrollanimation()
+
+// Navbar links loading animation
+function navLinksloadingAnimation() {
+  gsap.utils.toArray(".nav-link").forEach((link, index) => {
+    gsap.from(link, {
+      opacity: 0,
+      y: 40,
+      duration: 0.6,
+      delay: index * 0.1,
+      scrollTrigger: {
+        trigger: link,
+        scroller: "#main",   // locomotive scroll ka container
+        start: "top 90%",
+        end: "top 70%",
+        scrub: false,
+        toggleActions: "play none none reverse",
+      }
+    });
+  });
+}
+navLinksloadingAnimation();
 
 //Nav-link active color change
 function NavLinkActive() {
