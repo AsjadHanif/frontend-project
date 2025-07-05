@@ -259,6 +259,54 @@ document.querySelector('.prd6').addEventListener("mouseleave", function () {
 }
 moreproducts()
 
+function horizontalDrag() {
+  const slider = document.querySelector("#msgs");
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
+  slider.addEventListener("mousedown", (e) => {
+    isDown = true;
+    slider.classList.add("active");
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+});
 
+slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+});
+
+slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2;
+    slider.scrollLeft = scrollLeft - walk;
+});
+}
+horizontalDrag();
+
+function updateCenterButton() {
+  const container = document.querySelector('#msgs');
+  const buttons = container.querySelectorAll('button');
+  const containerCenter = container.offsetWidth / 2;
   
+  buttons.forEach(button => {
+      const buttonCenter = button.offsetLeft + button.offsetWidth / 2 - container.scrollLeft;
+      const distanceFromCenter = Math.abs(containerCenter - buttonCenter);
+      
+      if (distanceFromCenter < button.offsetWidth / 2) {
+          button.classList.add('center-button');
+      } else {
+          button.classList.remove('center-button');
+      }
+  });
+}
+// Add scroll event listener
+document.querySelector('#msgs').addEventListener('scroll', updateCenterButton);
+updateCenterButton();
