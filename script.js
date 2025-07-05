@@ -86,6 +86,47 @@ function navLinksloadingAnimation() {
 }
 navLinksloadingAnimation();
 
+function handleNavbarScroll() {
+  let lastScrollTop = 0;
+  const navbar = document.querySelector('nav');
+  
+  window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Scroll down
+      if (scrollTop > lastScrollTop) {
+          navbar.style.transform = 'translateY(-100%)';
+          navbar.style.transition = 'transform 0.3s ease-in-out';
+      }
+      // Scroll up
+      else {
+          navbar.style.transform = 'translateY(0)';
+          navbar.style.transition = 'transform 0.3s ease-in-out';
+      }
+      
+      lastScrollTop = scrollTop;
+  });
+}
+
+handleNavbarScroll();
+// Side menu
+function SideMenu() {
+  const menuBtn = document.querySelector('.ri-menu-line');
+  const sideMenu = document.getElementById('sideMenu');
+
+  menuBtn.addEventListener('click', () => {
+      sideMenu.classList.toggle('active');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+      if (!sideMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+          sideMenu.classList.remove('active');
+      }
+  });
+}
+SideMenu();
+
 //Nav-link active color change
 function NavLinkActive() {
   // Get all nav links
@@ -217,4 +258,7 @@ document.querySelector('.prd6').addEventListener("mouseleave", function () {
 
 }
 moreproducts()
+
+
+
   

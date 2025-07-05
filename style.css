@@ -55,6 +55,7 @@ nav #nav-part1 svg:hover{
   font-size: larger;
   padding: 0 36px;
 }
+
 .nav-link{
   text-transform: uppercase;
   color: #000;
@@ -85,6 +86,59 @@ nav #nav-part1 svg:hover{
   transform: scaleX(1);
   transform-origin: left;
 }
+.side-menu {
+  position: fixed;
+  right: -300px;
+  top: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: #f7f7f7;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: right 0.4s ease;
+  z-index: 1000;
+}
+
+.side-menu.active {
+  right: 0;
+}
+
+.menu-items {
+  padding: 100px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.menu-link {
+  color: #000;
+  text-decoration: none;
+  font-size: 24px;
+  font-family: "Titillium Web", sans-serif;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.menu-link:hover {
+  color: #50af43;
+}
+.menu-link::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+  margin-top: 0.6px;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease-in-out , opacity 0.4s; 
+}
+.menu-link:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
 .cursor{
   height: 200px;
   width: 200px;
@@ -215,35 +269,86 @@ nav #nav-part1 svg:hover{
     text-decoration: none;
     border-radius: 50px;
     background-color: rgb(194, 194, 122);
-    left: 20%;
+    left: 16%;
     top: 50%;
     /* transform: translate(-50%, -50%); */
 }
 #page2 .elem .dets .dets-heading{
   display: flex;
-  margin: 10px 10px 0 ;
+  position: absolute;
+  margin: 12px 10px 0 ;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
   gap: 15px;
   max-width: 90%;
 }
-#page2 .elem .dets .dets-heading .dets{
+#page2 .elem .dets .dets-heading .dot{
   height: 10px;
   width: 10px;
   border-radius: 50%;
   background-color: #0a0a0a;
   display: inline-block;
 }
+#page2 .elem .dets .dets-heading .shop-text{
+  font-size: 14px;
+  font-family: "arial narrow", 'sans-serif';
+  text-transform: uppercase;
+  color: #474747;
+  font-weight: 700;
+  margin: 0 30px 0 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+#page2 .elem .dets .dets-heading .category-text{
+  font-size: 15px;
+  font-family: futura;
+  text-transform: uppercase;
+  color: #161616;
+  line-height: 2;
+  margin: 0 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+#page2 .elem .dets .dets-heading i{
+  color: #1f1f1f;
+}
 #page2 .elem .dets .product-list{
     display: none;
+    height: 200px;
+    background-color: rgba(248, 248, 207, 0.61);
+    border-radius: 12%;
+    
 }
 #page2 .elem .dets:hover .product-list{
     display: block;
-    height: 200px;
-    transition: ease-out 0.4s;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
     backdrop-filter: blur(5px);
-    background-color: rgba(248, 248, 207, 0.61);
+    position: absolute;
+    z-index: -99;
+}
+#page2 .elem .dets:hover .product-list img{
+    height: 100%;
+    width: 100%;
+    padding: 30px 20px 0 ;
+    object-fit: cover;
+}
+#page2 .elem .dets:hover .product-list .product-title{
+    padding: 10px 6px 0;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: 'arial narrow', 'sans-serif';
+    font-weight: 400;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    line-height: 1.5;
+    text-align: center;
 }
 #page2 .promo-section {
   margin-bottom: 10vh;
@@ -326,14 +431,37 @@ nav #nav-part1 svg:hover{
 }
 .moreprds span{
   font-size: 1vw;
+  font-size: x-large;
   text-align: center;
   font-family: 'Arial Narrow', Arial, sans-serif;
   font-weight: 400;
   min-width: 40vw;
-  height: 20px;
+  height: 30px;
   margin-left: 12vw;
 }
+@media (max-width: 1450px) {
+  #page2 .elem .dets{
+    height: 60px;
+    width: 60%;
+    left: 20%;
+    top: 50%;
+  }
+  #page2 .elem .dets .dets-heading{
+    margin: 12px 0 0 ;
+    gap: 6px;
+    max-width: 60%;
+  }
+}
 @media (max-width: 1024px) {
+  .nav-link{
+    padding: 0 10px;
+  }
+  .icons{
+    margin-right: 20px;
+  }
+  .nav-icon{
+    padding: 0 16px;
+  }
   #page1{
     padding: 35vw 2vw 2vw 2vw;
     min-height: 90vh;
@@ -356,7 +484,7 @@ nav #nav-part1 svg:hover{
   #page2{
     display: flex;
     justify-content: space-between;
-    min-height: 200vh;
+    height: 400vh;
     width: 100%;
     position: relative;
     flex-direction: column;
@@ -377,7 +505,23 @@ nav #nav-part1 svg:hover{
     width: 100%;
     overflow: hidden;
   }
-
+  #page2 .elem .dets{
+    height: 60px;
+    width: 40%;
+    left: 30%;
+    top: 50%;
+}
+#page2 .elem .dets .dets-heading{
+  margin: 12px 10px 0 ;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 15px;
+  max-width: 90%;
+}
+#page2 .elem .dets .dets-heading .category-text{
+  margin: 0 50px;
+}
   #page2 .promo-section{
     max-width: 100%;
     padding: 0 0 3vw 0;
@@ -413,9 +557,17 @@ nav #nav-part1 svg:hover{
   .promo-link{
     padding-top: 30px;
   }
- 
+  .moreprds span{
+    font-size: large;
+    min-width: 30vw;
+    height: 30px;
+    margin-left: 7vw;
+  }
 }
 @media (max-width: 768px)  {
+  .nav .item {
+    display: none;
+  }
   #page1{
     padding: 35vw 2vw 2vw 2vw;
     min-height: 70vh;
@@ -440,6 +592,17 @@ nav #nav-part1 svg:hover{
     width: auto;
     max-width: 60px;
   }
-  
-  
+  #page2{
+    height: 300vh;
+  }
+  #page2 .elem .dets{
+    height: 60px;
+    width: 50%;
+    left: 20%;
+    top: 50%;
+}
+#page2 .moreprds span{
+  font-size: medium;
+  margin-left: 10px;
+}
 }
