@@ -310,3 +310,73 @@ function updateCenterButton() {
 // Add scroll event listener
 document.querySelector('#msgs').addEventListener('scroll', updateCenterButton);
 updateCenterButton();
+
+
+function initReviewsSystem() {
+    const buttons = document.querySelectorAll('#msgs button');
+    const reviews = document.querySelectorAll('.review');
+    let activeIndex = 0;
+
+    function updateActiveReview(index) {
+        reviews.forEach(review => review.classList.remove('active'));
+        reviews[index].classList.add('active');
+    }
+
+    function handleButtonClick(index) {
+        activeIndex = index;
+        updateActiveReview(index);
+    }
+
+    buttons.forEach((button, index) => {
+        button.addEventListener('click', () => handleButtonClick(index));
+    });
+
+    // Show first review initially
+    updateActiveReview(0);
+
+    // Update review when center button changes
+    function updateReviewOnScroll() {
+        const container = document.querySelector('#msgs');
+        const containerCenter = container.offsetWidth / 2;
+        
+        buttons.forEach((button, index) => {
+            const buttonCenter = button.offsetLeft + button.offsetWidth / 2 - container.scrollLeft;
+            const distanceFromCenter = Math.abs(containerCenter - buttonCenter);
+            
+            if (distanceFromCenter < button.offsetWidth / 2) {
+                handleButtonClick(index);
+            }
+        });
+    }
+
+    document.querySelector('#msgs').addEventListener('scroll', updateReviewOnScroll);
+}
+
+// Initialize reviews system
+initReviewsSystem();
+
+function msgsbtnloop() {
+  const msgs = document.getElementById("msgs");
+const track = msgs.querySelector(".msg-track");
+
+// Clone original content
+let originalButtons = track.innerHTML;
+track.innerHTML = originalButtons + originalButtons + originalButtons;
+
+// Set scroll to middle set
+let singleWidth = track.scrollWidth / 3;
+msgs.scrollLeft = singleWidth;
+
+// Handle infinite loop
+msgs.addEventListener("scroll", () => {
+  if (msgs.scrollLeft <= singleWidth * 0.1) {
+    // Scrolling too far left → jump ahead
+    msgs.scrollLeft += singleWidth;
+  } else if (msgs.scrollLeft >= singleWidth * 1.9) {
+    // Scrolling too far right → jump back
+    msgs.scrollLeft -= singleWidth;
+  }
+});
+
+}
+msgsbtnloop();
