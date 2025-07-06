@@ -179,7 +179,7 @@ function loadinganimation() {
         opacity: 0,
         duration: 0.3,
         delay: 0.7, 
-    })
+    })  
 }
 loadinganimation()
 
@@ -311,49 +311,55 @@ function updateCenterButton() {
 document.querySelector('#msgs').addEventListener('scroll', updateCenterButton);
 updateCenterButton();
 
-
-function initReviewsSystem() {
-    const buttons = document.querySelectorAll('#msgs button');
-    const reviews = document.querySelectorAll('.review');
-    let activeIndex = 0;
-
-    function updateActiveReview(index) {
-        reviews.forEach(review => review.classList.remove('active'));
-        reviews[index].classList.add('active');
-    }
-
-    function handleButtonClick(index) {
-        activeIndex = index;
-        updateActiveReview(index);
-    }
-
-    buttons.forEach((button, index) => {
-        button.addEventListener('click', () => handleButtonClick(index));
-    });
-
-    // Show first review initially
-    updateActiveReview(0);
-
-    // Update review when center button changes
-    function updateReviewOnScroll() {
-        const container = document.querySelector('#msgs');
-        const containerCenter = container.offsetWidth / 2;
-        
-        buttons.forEach((button, index) => {
-            const buttonCenter = button.offsetLeft + button.offsetWidth / 2 - container.scrollLeft;
-            const distanceFromCenter = Math.abs(containerCenter - buttonCenter);
-            
-            if (distanceFromCenter < button.offsetWidth / 2) {
-                handleButtonClick(index);
-            }
-        });
-    }
-
-    document.querySelector('#msgs').addEventListener('scroll', updateReviewOnScroll);
-}
+    function initReviewsSystem() {
+      const outer = document.getElementById('msgs'); // fix here
+      const reviews = document.querySelectorAll('.review');
+  
+      function updateActiveReviewById(id) {
+          reviews.forEach(review => {
+              review.classList.remove('active');
+              if (review.getAttribute('data-review') === id) {
+                  review.classList.add('active');
+              }
+          });
+      }
+  
+      function updateReviewOnScroll() {
+          const buttons = document.querySelectorAll('.msg-track button');
+          const containerCenter = outer.offsetWidth / 2;
+          let closestButton = null;
+          let minDistance = Infinity;
+          let closestId = null;
+  
+          buttons.forEach((button) => {
+              const buttonCenter = button.offsetLeft + button.offsetWidth / 2 - outer.scrollLeft;
+              const distance = Math.abs(containerCenter - buttonCenter);
+              if (distance < minDistance) {
+                  minDistance = distance;
+                  closestButton = button;
+                  closestId = button.getAttribute('data-review');
+              }
+          });
+  
+          buttons.forEach(btn => btn.classList.remove('center-button'));
+          if (closestButton) closestButton.classList.add('center-button');
+  
+          if (closestId) updateActiveReviewById(closestId);
+      }
+  
+      document.querySelectorAll('.msg-track button').forEach(button => {
+          button.addEventListener('click', () => {
+              updateActiveReviewById(button.getAttribute('data-review'));
+          });
+      });
+  
+      outer.addEventListener('scroll', updateReviewOnScroll);
+      updateReviewOnScroll(); // ensure first load shows review
+  }
 
 // Initialize reviews system
 initReviewsSystem();
+
 
 function msgsbtnloop() {
   const msgs = document.getElementById("msgs");
