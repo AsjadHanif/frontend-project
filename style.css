@@ -457,7 +457,7 @@ nav #nav-part1 svg:hover{
   margin-left: 12vw;
 }
 #page3{
-  height: 300vh;
+  height: 350vh;
   /* width: 100%; */
   position: relative;
   padding: 0 1.5vw;
@@ -639,7 +639,7 @@ nav #nav-part1 svg:hover{
 }
 #result .text p{
   padding: 20px 20px 10px 0;
-  font-size: 1.2em;
+  font-size: 1em;
   font-family: 'arial narrow','sans-serif';
   line-height: 1.5;
   color: #000;
@@ -647,7 +647,7 @@ nav #nav-part1 svg:hover{
 #result button{
   color: black;
   text-transform: uppercase;
-  font-size: 1.1em;
+  font-size: 0.7em;
   font-family: 'arial narrow','sans-serif';
   line-height: 1.5;
   padding: 20px 20px 10px 0;
@@ -659,36 +659,76 @@ nav #nav-part1 svg:hover{
   height: 1px;
   background-color: #000;
   margin-top: 2px;
+  transform: scaleX(1);
 }
 #result button:hover::after {
   transform: scaleX(0);
-  transform-origin: right;
+  transform-origin: left;
   transition: transform 0.3s ease-in-out;
 }
-#result .images{
-  width: 70%;
-  display: flex;
-  flex-direction: row;
-  justify-content: end;
-  align-items: center;
+
+#result .images {
+  width: 65%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-gap: 4px;
+  grid-auto-rows: minmax(80px, auto);
+  grid-auto-flow: dense;
 }
-#result .images img{
-  height: 80vh;
-  width: 30vw;
-  object-fit: cover;
-  margin: 0 10px;
+
+.card {
+  min-height: 100px;
+  background-size: cover;
+  background-position: center;
+}
+
+.span-2 {
+  grid-column-end: span 2;
+  grid-row-end: span 2;
+  min-height: 200px;
+}
+
+.span-3 {
+  grid-column-end: span 3;
+  grid-row-end: span 3;
+  min-height: 300px;
 }
 
 #email{
+  margin-top: 20px;
   height: 100vh;
   width: 100%;
   background-color: #474747;
 }
-
-#circleanimation{
-  height: 50vh;
+#email input{
+  height: 10vh;
   width: 100%;
-  background-color: #bdb7b7;
+  border: #f7f7f7 0px;
+  border-bottom: #000 1px solid;
+  text-decoration: none;
+  background-color: #f7f7f7;
+  text-transform: uppercase;
+  font-size: 2em;
+  font-family: 'futura',sans-serif;
+  line-height: 1;
+  color: #000;
+  font-weight: 600;
+}
+#email input::placeholder{
+  color: #000;
+}
+#email input:focus{
+  border: none;
+}
+#circleanimation{
+  height: 13vh;
+  width: 14vw;
+  background-color: transparent;
+  position: absolute;
+  top: 72%;
+  left: 42%;
+  transform: translate(-50%, 140%);
 }
 
 

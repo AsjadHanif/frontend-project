@@ -311,7 +311,7 @@ function updateCenterButton() {
 document.querySelector('#msgs').addEventListener('scroll', updateCenterButton);
 updateCenterButton();
 
-    function initReviewsSystem() {
+function initReviewsSystem() {
       const outer = document.getElementById('msgs'); // fix here
       const reviews = document.querySelectorAll('.review');
   
@@ -356,7 +356,6 @@ updateCenterButton();
       outer.addEventListener('scroll', updateReviewOnScroll);
       updateReviewOnScroll(); // ensure first load shows review
   }
-
 // Initialize reviews system
 initReviewsSystem();
 
@@ -387,6 +386,46 @@ msgs.addEventListener("scroll", () => {
 }
 msgsbtnloop();
 
+function imagegrid() {
+  const imagesDiv = document.querySelector("#result .images");
+
+const weightedRand = (spec) => {
+  let sum = 0, r = Math.random();
+  for (let i in spec) {
+    sum += spec[i];
+    if (r <= sum) return i;
+  }
+};
+
+const imageList = [
+  'assests/images/1.jpg',
+  'assests/images/2.jpg',
+  'assests/images/3.jpg',
+  'assests/images/4.jpg',
+  'assests/images/5.jpg',
+  'assests/images/6.jpg',
+  'assests/images/7.jpg',
+  'assests/images/8.jpg',
+  'assests/images/9.jpg',
+  'assests/images/10.jpg',
+  'assests/images/11.jpg',
+];
+
+// Only take the first 10 images, no repetition
+for (let i = 0; i < 11; i++) {
+  const span = weightedRand({ 1: 0.6, 2: 0.3, 3: 0.1 });
+  const imageUrl = imageList[i]; // no random index
+
+  const div = document.createElement("div");
+  div.className = `card span-${span}`;
+  div.style.backgroundImage = `url(${imageUrl})`;
+
+  imagesDiv.appendChild(div);
+}
+
+}
+imagegrid();
+
 //Cirle-animation
 function Circleanimation() {
   
@@ -394,7 +433,7 @@ function Circleanimation() {
     container: document.getElementById('circleanimation'),
     path: 'orgcircle.json',
     render: 'svg',
-    loop: false,
+    loop: true,
     autoplay: true,
   });
 }
