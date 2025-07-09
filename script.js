@@ -386,3 +386,16 @@ msgs.addEventListener("scroll", () => {
 
 }
 msgsbtnloop();
+
+//Cirle-animation
+function Circleanimation() {
+  
+  var animation = bodymovin.loadAnimation({
+    container: document.getElementById('circleanimation'),
+    path: 'orgcircle.json',
+    render: 'svg',
+    loop: false,
+    autoplay: true,
+  });
+}
+Circleanimation();
