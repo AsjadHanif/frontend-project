@@ -486,6 +486,9 @@ nav #nav-part1 svg:hover{
 .tagline .tag2{
   margin-bottom: 25px; 
 }
+#reviews{
+  height: 150vh;
+}
 #msgs{
   display: flex;
   gap: 20px;
@@ -648,6 +651,19 @@ nav #nav-part1 svg:hover{
   font-family: 'arial narrow','sans-serif';
   line-height: 1.5;
   padding: 20px 20px 10px 0;
+}
+#result button::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+  margin-top: 2px;
+}
+#result button:hover::after {
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
 }
 #result .images{
   width: 70%;
