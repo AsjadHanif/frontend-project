@@ -1,38 +1,47 @@
 // Locomotive Scroll trigger
+ m// ==========================================
+// LOCOMOTIVE SCROLL INTEGRATION WITH GSAP SCROLLTRIGGER
+// ==========================================
+// This function initializes and configures the integration between Locomotive Scroll 
+// and GSAP ScrollTrigger for smooth scrolling animations
 function ScrollTriggler() {
   gsap.registerPlugin(ScrollTrigger);
 
-// Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
+  // Initialize Locomotive Scroll for smooth scrolling
+  const locoScroll = new LocomotiveScroll({
+    el: document.querySelector("#main"),
+    smooth: true
+  });
+  
+  // Update ScrollTrigger whenever Locomotive Scroll updates
+  locoScroll.on("scroll", ScrollTrigger.update);
 
-const locoScroll = new LocomotiveScroll({
-  el: document.querySelector("#main"),
-  smooth: true
-});
-// each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
-locoScroll.on("scroll", ScrollTrigger.update);
+  // Set up ScrollTrigger proxy for Locomotive Scroll
+  ScrollTrigger.scrollerProxy("#main", {
+    scrollTop(value) {
+      return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+    },
+    getBoundingClientRect() {
+      return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
+    },
+    // Handle mobile devices differently
+    pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
+  });
 
-// tell ScrollTrigger to use these proxy methods for the "#main" element since Locomotive Scroll is hijacking things
-ScrollTrigger.scrollerProxy("#main", {
-  scrollTop(value) {
-    return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
-  }, // we don't have to define a scrollLeft because we're only scrolling vertically.
-  getBoundingClientRect() {
-    return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
-  },
-  // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
-  pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
-});
+  // Refresh ScrollTrigger and update LocomotiveScroll when window updates
+  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
 
-// each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
-ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
-
-// after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
-ScrollTrigger.refresh();
-
+  // Refresh ScrollTrigger after setup
+  ScrollTrigger.refresh();
 }
+
+// Initialize ScrollTrigger integration
 ScrollTriggler()
 
-// gsap scroll triggler logo animation
+// ==========================================
+// LOGO ANIMATION ON SCROLL
+// ==========================================
+// Animates the logo when user scrolls down the page
 function logoanimation() {
     gsap.to("#nav-part1 svg", {
       transform: "translateY(-150%) scale(1.4)",
@@ -48,20 +57,23 @@ function logoanimation() {
 }
 logoanimation()
 
-// gsap scroll triggler nav-item animation
+// ==========================================
+// NAVIGATION ITEMS SCROLL ANIMATION
+// ==========================================
+// Fades out navigation items when scrolling down
 function navitemScrollanimation() {
-gsap.to(".item", {
-  y: "-150%",
-  opacity: 0,
-  stagger: 0.05,
-  scrollTrigger: {
-    trigger: "#page1",
-    scroller: "#main",
-    start: "top 0",
-    end: "top -5%",
-    scrub: 1,
-  }
-});
+  gsap.to(".item", {
+    y: "-150%",
+    opacity: 0,
+    stagger: 0.05,  // Creates a sequential animation effect
+    scrollTrigger: {
+      trigger: "#page1",
+      scroller: "#main",
+      start: "top 0",
+      end: "top -5%",
+      scrub: 1,
+    }
+  });
 }
 navitemScrollanimation()
 
