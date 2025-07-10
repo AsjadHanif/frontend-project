@@ -696,8 +696,8 @@ nav #nav-part1 svg:hover{
 }
 
 #email{
-  margin-top: 20px;
-  height: 100vh;
+  margin-top: 60px;
+  height: 10vh;
   width: 100%;
   background-color: #474747;
 }
@@ -718,17 +718,22 @@ nav #nav-part1 svg:hover{
 #email input::placeholder{
   color: #000;
 }
-#email input:focus{
-  border: none;
-}
 #circleanimation{
   height: 13vh;
   width: 14vw;
   background-color: transparent;
   position: absolute;
-  top: 72%;
-  left: 42%;
-  transform: translate(-50%, 140%);
+  top: 78.5%;
+  left: 35%;
+}
+#email i{
+  position: absolute;
+  scale: 2.7;
+  top: 80%;
+  left: 96%;
+}
+#email .ri-corner-down-left-line{
+  display: none;
 }
 
 
@@ -1054,7 +1059,7 @@ nav #nav-part1 svg:hover{
   margin-left: 12vw;
 }
 #page3{
-  min-height: 100vh;
+  max-height: 300vh;
   /* width: 100%; */
   position: relative;
   padding: 0 1.5vw;
@@ -1155,6 +1160,18 @@ nav #nav-part1 svg:hover{
   display: block;
   max-width: 10em;
 }
+#footer{
+  margin: 20px 30px 0;
+  height: 60vh;
+  width: 100%;
+  background-color: #f7f7f7;
+}
+#footer span {
+  color: #474747;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+#footer 
 
 
 @media (max-width: 1450px) {

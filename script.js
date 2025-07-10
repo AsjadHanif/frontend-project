@@ -438,3 +438,32 @@ function Circleanimation() {
   });
 }
 Circleanimation();
+
+function removeCircleanimation() {
+  var animation = document.getElementById('circleanimation');
+  var input = document.getElementById('input');
+  input.addEventListener('click', function() {
+    animation.style.display = 'none';
+  });
+}
+removeCircleanimation();
+
+// Remove placeholder on input click
+function removeEmailPlaceholder() {
+  const input = document.getElementById('input');
+  input.addEventListener('click', function () {
+    input.placeholder = '';
+  });
+}
+removeEmailPlaceholder();
+
+function changeEmailicon() {
+  const icon1 = document.getElementById('icon1');
+  const icon2 = document.getElementById('icon2');
+  const input = document.getElementById('input');
+  input.addEventListener('click', function () {
+    icon1.style.display = 'none';
+    icon2.style.display = 'block';
+  });
+}
+changeEmailicon();
