@@ -1,5 +1,5 @@
 // Locomotive Scroll trigger
- m// ==========================================
+// ==========================================
 // LOCOMOTIVE SCROLL INTEGRATION WITH GSAP SCROLLTRIGGER
 // ==========================================
 // This function initializes and configures the integration between Locomotive Scroll 
